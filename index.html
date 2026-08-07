@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Premium personal portfolio website for Karthik K A, a Computer Science Engineering student and Full-Stack Developer.">
+  <title>Karthik K A | Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="assets/images/logo.png?v=2">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo-wrapper">
+        <div class="loader-kka">KKA</div>
+        <div class="loader-portfolio">PORTFOLIO</div>
+      </div>
+      <div class="loader-sweep"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Procedural Background System -->
+  <div id="background-system">
+    <canvas id="starfield"></canvas>
+    <div id="atmosphere-overlay"></div>
+    <div id="ambient-waves">
+      <div class="ambient-wave wave-1"></div>
+      <div class="ambient-wave wave-2"></div>
+      <div class="ambient-wave wave-3"></div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="logo" href="#hero" aria-label="Karthik K A home">
+        <img src="assets/images/favicon.png" alt="" class="navbar-favicon">
+        Karthik<span>.</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a class="nav-link active" href="#hero">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link" href="#activities">Activities</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <div class="nav-indicator"></div>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow reveal-up" style="transition-delay: 100ms">Available for impactful engineering work</p>
+          <h1 class="reveal-up" style="transition-delay: 200ms">Karthik K A</h1>
+          <h2 class="reveal-up" style="transition-delay: 300ms">Computer Science Engineering Student | Full-Stack Developer</h2>
+          <p class="hero-description reveal-up" style="transition-delay: 400ms">
+            I am a Computer Science Engineering student and Full-Stack Developer with a passion for building 
+            AI-powered applications and scalable software solutions. I leverage modern technologies to solve 
+            real-world problems through clean architecture and practical interfaces.
+          </p>
+          <div class="hero-actions reveal-up" style="transition-delay: 500ms" aria-label="Primary actions">
+            <a class="btn btn-primary interactive" href="#projects">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              <span>View Projects</span>
+            </a>
+            <a class="btn btn-secondary interactive" href="./assets/Resume/Resume.pdf" download>
+              <i class="fa-solid fa-download" aria-hidden="true"></i>
+              <span>Download Resume</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">About Me</p>
+          <h2><span class="stagger-word">Focused</span> <span class="stagger-word">on</span> <span class="stagger-word">building</span> <span class="stagger-word">products</span> <span class="stagger-word">that</span> <span class="stagger-word">feel</span> <span class="stagger-word">precise,</span> <span class="stagger-word">useful,</span> <span class="stagger-word">and</span> <span class="stagger-word">dependable.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy reveal-up" style="transition-delay: 100ms">
+            <p>
+              I am a driven Computer Science Engineering student specializing in full-stack development and AI-powered applications. 
+              My academic and project experience has equipped me with a strong foundation in building scalable backend systems, 
+              responsive user interfaces, and integrating machine learning models into practical tools.
+            </p>
+            <p>
+              I am passionate about continuous learning and applying cutting-edge technologies like computer vision and 
+              deep learning to solve complex challenges. I am currently focused on expanding my expertise and 
+              contributing to impactful software projects.
+            </p>
+          </div>
+
+          <div class="info-grid" aria-label="Personal information">
+            <article class="info-card interactive reveal-up" style="transition-delay: 100ms">
+              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+              <h3>Role</h3>
+              <p>Student & Developer</p>
+            </article>
+            <article class="info-card interactive reveal-up" style="transition-delay: 200ms">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <h3>Location</h3>
+              <p>India</p>
+            </article>
+            <article class="info-card interactive reveal-up" style="transition-delay: 300ms">
+              <i class="fa-solid fa-code" aria-hidden="true"></i>
+              <h3>Focus</h3>
+              <p>Full-Stack & AI Applications</p>
+            </article>
+            <article class="info-card interactive reveal-up" style="transition-delay: 400ms">
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <h3>Education</h3>
+              <p>JSS Science & Technology University</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">Skills</p>
+          <h2><span class="stagger-word">Technical</span> <span class="stagger-word">toolkit</span> <span class="stagger-word">for</span> <span class="stagger-word">designing,</span> <span class="stagger-word">building,</span> <span class="stagger-word">and</span> <span class="stagger-word">shipping</span> <span class="stagger-word">reliable</span> <span class="stagger-word">software.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card interactive reveal-blur" style="transition-delay: 100ms">
+            <div class="card-icon interactive-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+            <h3>Languages</h3>
+            <ul>
+              <li><i class="fa-brands fa-cuttlefish" aria-hidden="true"></i> C / C++</li>
+              <li><i class="fa-brands fa-python" aria-hidden="true"></i> Python</li>
+              <li><i class="fa-brands fa-js" aria-hidden="true"></i> JavaScript</li>
+            </ul>
+          </article>
+          <article class="skill-card interactive reveal-blur" style="transition-delay: 200ms">
+            <div class="card-icon interactive-icon"><i class="fa-solid fa-window-maximize" aria-hidden="true"></i></div>
+            <h3>Frontend & Web</h3>
+            <ul>
+              <li><i class="fa-brands fa-html5" aria-hidden="true"></i> HTML5</li>
+              <li><i class="fa-brands fa-css3-alt" aria-hidden="true"></i> CSS3</li>
+              <li><i class="fa-brands fa-python" aria-hidden="true"></i> Flask</li>
+            </ul>
+          </article>
+          <article class="skill-card interactive reveal-blur" style="transition-delay: 300ms">
+            <div class="card-icon interactive-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></div>
+            <h3>AI & Computer Vision</h3>
+            <ul>
+              <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i> TensorFlow</li>
+              <li><i class="fa-solid fa-eye" aria-hidden="true"></i> OpenCV</li>
+              <li><i class="fa-solid fa-object-group" aria-hidden="true"></i> YOLOv8</li>
+            </ul>
+          </article>
+          <article class="skill-card interactive reveal-blur" style="transition-delay: 400ms">
+            <div class="card-icon interactive-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+            <h3>Tools</h3>
+            <ul>
+              <li><i class="fa-brands fa-git-alt" aria-hidden="true"></i> Git</li>
+              <li><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</li>
+              <li><i class="fa-solid fa-code" aria-hidden="true"></i> VS Code</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">Projects</p>
+          <h2><span class="stagger-word">Selected</span> <span class="stagger-word">work</span> <span class="stagger-word">focused</span> <span class="stagger-word">on</span> <span class="stagger-word">AI</span> <span class="stagger-word">and</span> <span class="stagger-word">practical</span> <span class="stagger-word">solutions.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card interactive reveal-up" style="transition-delay: 100ms">
+            <div class="project-image">
+              <img src="assets/images/agrismart.png" alt="Smart Agri Dashboard" class="project-img">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Smart Agriculture Platform</h3>
+              <p>
+                An intelligent system designed to monitor and optimize agricultural processes, leveraging AI to improve crop yield and resource management.
+              </p>
+              <div class="tech-stack">
+                <span style="transition-delay: 50ms">Python</span>
+                <span style="transition-delay: 100ms">Machine Learning</span>
+                <span style="transition-delay: 150ms">Full-Stack</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn btn-small btn-secondary interactive" href="https://github.com/karthikka430-rgb/smart-agri" target="_blank" aria-label="View Smart Agriculture Platform on GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>GitHub</span>
+                </a>
+                <a class="btn btn-small btn-primary interactive" href="#" aria-label="Open Smart Agriculture Platform live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card interactive reveal-up" style="transition-delay: 200ms">
+            <div class="project-image">
+              <img src="assets/images/wildlife.png" alt="Vision Wild Dashboard" class="project-img">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Wildlife Poaching Detection System</h3>
+              <p>
+                A computer vision application utilizing YOLOv8 and OpenCV to detect and alert authorities about potential poaching activities in real-time.
+              </p>
+              <div class="tech-stack">
+                <span style="transition-delay: 50ms">Python</span>
+                <span style="transition-delay: 100ms">YOLOv8</span>
+                <span style="transition-delay: 150ms">OpenCV</span>
+                <span style="transition-delay: 200ms">TensorFlow</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn btn-small btn-secondary interactive" href="https://github.com/karthikka430-rgb/wildlife-poaching-detection" target="_blank" aria-label="View Wildlife Poaching Detection System on GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>GitHub</span>
+                </a>
+                <a class="btn btn-small btn-primary interactive" href="#" aria-label="Open Wildlife Poaching Detection System live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">Education</p>
+          <h2><span class="stagger-word">Academic</span> <span class="stagger-word">foundation</span> <span class="stagger-word">supported</span> <span class="stagger-word">by</span> <span class="stagger-word">continuous</span> <span class="stagger-word">practical</span> <span class="stagger-word">learning.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card interactive reveal-scale" style="transition-delay: 100ms">
+            <p class="timeline-date">2024 - 2028</p>
+            <h3>B.E. Computer Science & Engineering</h3>
+            <p><strong>JSS Science and Technology University</strong></p>
+            <p style="margin-top: 8px;">CGPA: 8.99</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="activities">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">Activities</p>
+          <h2><span class="stagger-word">Extracurricular</span> <span class="stagger-word">engagement</span> <span class="stagger-word">and</span> <span class="stagger-word">ongoing</span> <span class="stagger-word">self-improvement.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="certification-grid">
+          <article class="certification-card interactive reveal-up" style="transition-delay: 100ms">
+            <i class="fa-solid fa-laptop-code interactive-icon" aria-hidden="true"></i>
+            <h3>Hackathon Participant</h3>
+            <p>Engaging in competitive programming and collaborative problem-solving to build rapid prototypes.</p>
+          </article>
+          <article class="certification-card interactive reveal-up" style="transition-delay: 200ms">
+            <i class="fa-solid fa-book-open-reader interactive-icon" aria-hidden="true"></i>
+            <h3>NPTEL Learner</h3>
+            <p>Enriching academic knowledge through advanced technical courses and foundational learning.</p>
+          </article>
+          <article class="certification-card interactive reveal-up" style="transition-delay: 300ms">
+            <i class="fa-solid fa-arrows-spin interactive-icon" aria-hidden="true"></i>
+            <h3>Continuous Self-Learning</h3>
+            <p>Regularly exploring new frameworks, AI models, and software engineering best practices.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">Contact</p>
+          <h2><span class="stagger-word">Let</span> <span class="stagger-word">us</span> <span class="stagger-word">discuss</span> <span class="stagger-word">a</span> <span class="stagger-word">project,</span> <span class="stagger-word">role,</span> <span class="stagger-word">or</span> <span class="stagger-word">collaboration</span> <span class="stagger-word">that</span> <span class="stagger-word">needs</span> <span class="stagger-word">careful</span> <span class="stagger-word">execution.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-details">
+            <a class="contact-link interactive reveal-right" style="transition-delay: 100ms" href="mailto:karthikka430@gmail.com">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              karthikka430@gmail.com
+            </a>
+            <a class="contact-link interactive reveal-right" style="transition-delay: 200ms" href="tel:+919945006105">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              +91 9945006105
+            </a>
+            <a class="contact-link interactive reveal-right" style="transition-delay: 300ms" href="https://github.com/karthikka430-rgb" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              GitHub Profile
+            </a>
+            <a class="contact-link interactive reveal-right" style="transition-delay: 400ms" href="https://www.linkedin.com/in/karthik-k170107" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              LinkedIn Profile
+            </a>
+            <div class="contact-link interactive reveal-right" style="transition-delay: 500ms">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              India
+            </div>
+          </div>
+
+          <form id="contactForm" class="contact-form reveal-up" style="transition-delay: 300ms" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Replace YOUR_ACCESS_KEY_HERE with your Web3Forms access key -->
+            <input type="hidden" name="access_key" value="fea8e8f0-6a49-447e-b8f6-45aec5dee1a0">
+            <div class="form-group input-container">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+              <div class="input-border"></div>
+            </div>
+            <div class="form-group input-container">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+              <div class="input-border"></div>
+            </div>
+            <div class="form-group input-container">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about the project or opportunity" required></textarea>
+              <div class="input-border"></div>
+            </div>
+            <button class="btn btn-primary interactive" type="submit">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="current-year">2026</span> Karthik K A. All rights reserved.</p>
+      <div class="footer-socials" aria-label="Social links">
+        <a class="interactive" href="https://github.com/karthikka430-rgb" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a class="interactive" href="https://www.linkedin.com/in/karthik-k170107" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a class="interactive" href="mailto:karthikka430@gmail.com" aria-label="Email">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="interactive" aria-label="Scroll back to top">
+    <svg class="progress-ring" width="56" height="56">
+      <circle class="progress-ring__circle" stroke="rgb(var(--ambient-rgb-1))" stroke-width="2" fill="transparent" r="26" cx="28" cy="28"/>
+    </svg>
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
