@@ -72,19 +72,6 @@ body.menu-open {
   transition: width 0.1s ease-out;
 }
 
-#mobile-scroll-indicator {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 5px;
-  height: 0%;
-  background: linear-gradient(180deg, rgb(var(--ambient-rgb-1)), rgb(var(--ambient-rgb-2)));
-  z-index: 10000;
-  transition: height 0.1s ease-out;
-  border-radius: 4px;
-}
-
 /* Loading Screen */
 #loader {
   position: fixed;
@@ -913,7 +900,6 @@ a.contact-link:hover i { color: var(--color-accent); }
 @media (max-width: 640px) {
   #back-to-top { bottom: 20px; right: 20px; width: 48px; height: 48px; }
   .progress-ring { display: none; } /* Simplify on mobile */
-  #mobile-scroll-indicator { display: block; }
 }
 
 /* Reduced Motion */
