@@ -339,6 +339,12 @@ window.addEventListener("scroll", () => {
   if (progressBar) {
     progressBar.style.width = `${scrollPercent * 100}%`;
   }
+  
+  // Mobile Scroll Indicator
+  const mobileScrollIndicator = document.getElementById("mobile-scroll-indicator");
+  if (mobileScrollIndicator) {
+    mobileScrollIndicator.style.height = `${scrollPercent * 100}%`;
+  }
 
   // Back to Top Button & SVG Ring
   if (backToTopBtn) {
