@@ -426,3 +426,62 @@ if (contactForm) {
     });
   });
 }
+
+// Project Image Lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxClose = document.getElementById("lightbox-close");
+const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
+
+if (lightbox && lightboxImg && lightboxClose) {
+  const openLightbox = (imgSrc, imgAlt) => {
+    lightboxImg.src = imgSrc;
+    lightboxImg.alt = imgAlt || "Project preview";
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  };
+
+  lightboxTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const img = trigger.querySelector("img");
+      if (img && img.src) {
+        openLightbox(img.src, img.alt);
+      }
+    });
+
+    if (cursor && cursorRing) {
+      trigger.addEventListener("mouseenter", () => {
+        cursor.classList.add("hover");
+        cursorRing.classList.add("hover");
+      });
+      trigger.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hover");
+        cursorRing.classList.remove("hover");
+      });
+    }
+  });
+
+  lightboxClose.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeLightbox();
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target !== lightboxImg) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("open")) {
+      closeLightbox();
+    }
+  });
+}
+

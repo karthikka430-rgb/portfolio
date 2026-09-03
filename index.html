@@ -84,9 +84,9 @@
               <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
               <span>View Projects</span>
             </a>
-            <a class="btn btn-secondary interactive" href="./assets/Resume/Resume.pdf" download>
-              <i class="fa-solid fa-download" aria-hidden="true"></i>
-              <span>Download Resume</span>
+            <a class="btn btn-secondary interactive" href="./assets/Resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+              <span>View Resume</span>
             </a>
           </div>
         </div>
@@ -199,8 +199,44 @@
         </div>
 
         <div class="projects-grid">
+          <!-- FEATURED: RD-Agent -->
+          <article class="project-card project-card--featured interactive reveal-up" style="transition-delay: 50ms" id="project-rd-agent">
+            <div class="featured-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured Project</div>
+            <div class="project-image project-image--featured lightbox-trigger" title="Click to enlarge">
+              <img src="assets/images/rd-agent.png" alt="RD Agent Dashboard — Collection overview showing total customers, paid customers, pending collections and recent transactions" class="project-img project-img--featured">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">RD-Agent</h3>
+              <p>
+                A full-stack recurring-deposit collection management application that simplifies customer account management, payment tracking, collection records, and reporting. Provides a centralized dashboard for monitoring collection activity and account status in real time.
+              </p>
+              <ul class="project-features">
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>Collection dashboard &amp; overview</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>Customer management</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>Collection register</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>Payment &amp; pending collection tracking</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>Monthly payment status management</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>Collection reports (Excel &amp; PDF export)</li>
+              </ul>
+              <div class="tech-stack">
+                <span style="transition-delay: 50ms">Python</span>
+                <span style="transition-delay: 100ms">Flask</span>
+                <span style="transition-delay: 150ms">SQLAlchemy</span>
+                <span style="transition-delay: 200ms">SQLite / PostgreSQL</span>
+                <span style="transition-delay: 250ms">Vanilla JS</span>
+                <span style="transition-delay: 300ms">Capacitor</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn btn-small btn-secondary interactive" href="https://github.com/karthikka430-rgb/RD-Agent" target="_blank" rel="noopener noreferrer" aria-label="View RD-Agent on GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </article>
           <article class="project-card interactive reveal-up" style="transition-delay: 100ms">
-            <div class="project-image">
+            <div class="project-image lightbox-trigger" title="Click to enlarge">
               <img src="assets/images/agrismart.png" alt="Smart Agri Dashboard" class="project-img">
               <div class="image-overlay"></div>
             </div>
@@ -228,7 +264,7 @@
           </article>
 
           <article class="project-card interactive reveal-up" style="transition-delay: 200ms">
-            <div class="project-image">
+            <div class="project-image lightbox-trigger" title="Click to enlarge">
               <img src="assets/images/wildlife.png" alt="Vision Wild Dashboard" class="project-img">
               <div class="image-overlay"></div>
             </div>
@@ -389,6 +425,12 @@
     </svg>
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
+
+  <!-- Image Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button id="lightbox-close" aria-label="Close image preview"><i class="fa-solid fa-xmark"></i></button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
   <script src="script.js"></script>
 </body>
