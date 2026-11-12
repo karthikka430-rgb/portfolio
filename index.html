@@ -14,19 +14,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Custom Cursor -->
-  <div id="custom-cursor"></div>
-  <div id="cursor-ring"></div>
-
   <!-- Loading Screen -->
-  <div id="loader">
-    <div class="loader-content">
-      <div class="loader-logo-wrapper">
-        <div class="loader-kka">KKA</div>
-        <div class="loader-portfolio">PORTFOLIO</div>
-      </div>
-      <div class="loader-sweep"></div>
-    </div>
+  <div id="loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-spinner" aria-hidden="true"></div>
   </div>
 
   <!-- Scroll Progress Bar -->
@@ -43,11 +33,17 @@
     </div>
   </div>
 
+  <div id="scroll-bats" aria-hidden="true">
+    <svg class="scroll-bat" viewBox="0 0 64 32"><path d="M32 5C25 0 19 0 12 3l3 7C10 6 5 5 0 6c3 7 6 12 13 15l-4 3c7 5 14 5 20 0l3 6 3-6c6 5 13 5 20 0l-4-3c7-3 10-8 13-15-5-1-10 0-15 4l3-7c-7-3-13-3-20 2Z" fill="currentColor"/></svg>
+    <svg class="scroll-bat" viewBox="0 0 64 32"><path d="M32 5C25 0 19 0 12 3l3 7C10 6 5 5 0 6c3 7 6 12 13 15l-4 3c7 5 14 5 20 0l3 6 3-6c6 5 13 5 20 0l-4-3c7-3 10-8 13-15-5-1-10 0-15 4l3-7c-7-3-13-3-20 2Z" fill="currentColor"/></svg>
+    <svg class="scroll-bat" viewBox="0 0 64 32"><path d="M32 5C25 0 19 0 12 3l3 7C10 6 5 5 0 6c3 7 6 12 13 15l-4 3c7 5 14 5 20 0l3 6 3-6c6 5 13 5 20 0l-4-3c7-3 10-8 13-15-5-1-10 0-15 4l3-7c-7-3-13-3-20 2Z" fill="currentColor"/></svg>
+  </div>
+
   <header class="site-header">
     <nav class="navbar" aria-label="Primary navigation">
       <a class="logo" href="#hero" aria-label="Karthik K A home">
         <img src="assets/images/favicon.png" alt="" class="navbar-favicon">
-        Karthik<span>.</span>
+        Portfolio<span>.</span>
       </a>
 
       <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
@@ -60,6 +56,7 @@
         <li><a class="nav-link" href="#skills">Skills</a></li>
         <li><a class="nav-link" href="#projects">Projects</a></li>
         <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link" href="#certifications">Certifications</a></li>
         <li><a class="nav-link" href="#activities">Activities</a></li>
         <li><a class="nav-link" href="#contact">Contact</a></li>
         <div class="nav-indicator"></div>
@@ -71,7 +68,7 @@
     <section class="hero section" id="hero">
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="eyebrow reveal-up" style="transition-delay: 100ms">Available for impactful engineering work</p>
+          <p class="eyebrow availability-status reveal-up" style="transition-delay: 100ms">Available for impactful engineering work</p>
           <h1 class="reveal-up" style="transition-delay: 200ms">Karthik K A</h1>
           <h2 class="reveal-up" style="transition-delay: 300ms">Computer Science Engineering Student | Full-Stack Developer</h2>
           <p class="hero-description reveal-up" style="transition-delay: 400ms">
@@ -314,6 +311,33 @@
       </div>
     </section>
 
+    <section class="section section-alt" id="certifications">
+      <div class="container">
+        <div class="section-heading reveal-left">
+          <p class="eyebrow">Certifications</p>
+          <h2><span class="stagger-word">Verified</span> <span class="stagger-word">course</span> <span class="stagger-word">completion.</span></h2>
+          <div class="heading-underline"></div>
+        </div>
+
+        <div class="certification-grid certificate-grid">
+          <article class="certification-card certificate-card interactive reveal-up" style="transition-delay: 100ms">
+            <div class="certificate-summary">
+              <div class="certificate-icon" aria-hidden="true"><i class="fa-solid fa-award"></i></div>
+              <div class="certificate-content">
+                <h3>Fundamentals of Generative AI and Large Language Models: Theory and Practice</h3>
+                <p class="certificate-issuer">NPTEL <span aria-hidden="true">•</span> Course Completion Certificate</p>
+                <p class="certificate-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i><span>2026</span></p>
+              </div>
+            </div>
+            <a class="btn btn-secondary interactive certificate-button" href="assets/certifications/GenAI.pdf" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              <span>View Certificate</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-alt" id="activities">
       <div class="container">
         <div class="section-heading reveal-left">
@@ -329,11 +353,6 @@
             <p>Engaging in competitive programming and collaborative problem-solving to build rapid prototypes.</p>
           </article>
           <article class="certification-card interactive reveal-up" style="transition-delay: 200ms">
-            <i class="fa-solid fa-book-open-reader interactive-icon" aria-hidden="true"></i>
-            <h3>NPTEL Learner</h3>
-            <p>Enriching academic knowledge through advanced technical courses and foundational learning.</p>
-          </article>
-          <article class="certification-card interactive reveal-up" style="transition-delay: 300ms">
             <i class="fa-solid fa-arrows-spin interactive-icon" aria-hidden="true"></i>
             <h3>Continuous Self-Learning</h3>
             <p>Regularly exploring new frameworks, AI models, and software engineering best practices.</p>

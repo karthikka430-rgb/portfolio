@@ -17,6 +17,7 @@ const progressBar = document.getElementById("scroll-progress-bar");
 const siteHeader = document.querySelector(".site-header");
 const navIndicator = document.querySelector(".nav-indicator");
 const ambientWaves = document.getElementById("ambient-waves");
+const scrollBats = document.getElementById("scroll-bats");
 
 // Set Current Year
 if (currentYear) {
@@ -98,53 +99,15 @@ if (canvas) {
   }
 }
 
-// Custom Cursor & Mouse Parallax
-const cursor = document.getElementById("custom-cursor");
-const cursorRing = document.getElementById("cursor-ring");
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-let ringX = mouseX;
-let ringY = mouseY;
-let isCursorActive = false;
-
-if (cursor && cursorRing && window.matchMedia("(pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  isCursorActive = true;
+// Mouse Parallax Effects
+if (window.matchMedia("(pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Update center dot instantly
-    cursor.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
-    
     // Ambient Waves Parallax (15-20px max movement)
     if (ambientWaves) {
-      const xOffset = ((mouseX / window.innerWidth) - 0.5) * 40;
-      const yOffset = ((mouseY / window.innerHeight) - 0.5) * 40;
+      const xOffset = ((e.clientX / window.innerWidth) - 0.5) * 40;
+      const yOffset = ((e.clientY / window.innerHeight) - 0.5) * 40;
       ambientWaves.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     }
-  });
-
-  const animateRing = () => {
-    // Smooth interpolation for the outer ring
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-    
-    cursorRing.style.transform = `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
-    requestAnimationFrame(animateRing);
-  };
-  requestAnimationFrame(animateRing);
-
-  // Add hover states to interactive elements
-  const interactiveElements = document.querySelectorAll("a, button, input, textarea, .interactive, .interactive-icon");
-  interactiveElements.forEach(el => {
-    el.addEventListener("mouseenter", () => {
-      cursor.classList.add("hover");
-      cursorRing.classList.add("hover");
-    });
-    el.addEventListener("mouseleave", () => {
-      cursor.classList.remove("hover");
-      cursorRing.classList.remove("hover");
-    });
   });
 
   // 3D Card Mouse Parallax
@@ -227,18 +190,78 @@ const updateNavIndicator = (activeLink) => {
   }
 };
 
+let batFlightInProgress = false;
+let pendingBatTarget = null;
+
+const startQueuedBatFlight = () => {
+  if (!scrollBats || !pendingBatTarget || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const { sectionId, navLink } = pendingBatTarget;
+  pendingBatTarget = null;
+
+  let target = navLink;
+  if (!target || target.getBoundingClientRect().width === 0) {
+    const section = document.getElementById(sectionId);
+    target = section?.querySelector(".section-heading") || section?.querySelector("h1");
+  }
+  if (!target) return;
+
+  const targetRect = target.getBoundingClientRect();
+  const targetX = targetRect.left + targetRect.width / 2;
+  const targetY = targetRect.top + targetRect.height / 2;
+  const bats = Array.from(scrollBats.querySelectorAll(".scroll-bat"));
+  const launchOffsets = [-44, 0, 44];
+  if (!bats.length) return;
+
+  bats.forEach((bat, index) => {
+    const startX = Math.max(20, Math.min(window.innerWidth - 20, targetX + launchOffsets[index]));
+    const startY = window.innerHeight + 28 + index * 12;
+    bat.style.left = `${startX}px`;
+    bat.style.top = `${startY}px`;
+    bat.style.setProperty("--flight-x", `${targetX - startX}px`);
+    bat.style.setProperty("--flight-y", `${targetY - startY}px`);
+    bat.style.setProperty("--flight-rotation", `${index === 0 ? -8 : index === 2 ? 8 : 0}deg`);
+  });
+
+  batFlightInProgress = true;
+  bats[bats.length - 1].addEventListener("animationend", () => {
+    if (target.isConnected) {
+      target.classList.add("bat-arrived");
+      window.setTimeout(() => target.classList.remove("bat-arrived"), 900);
+    }
+    batFlightInProgress = false;
+    if (pendingBatTarget) startQueuedBatFlight();
+  }, { once: true });
+
+  scrollBats.classList.remove("is-flying");
+  void scrollBats.offsetWidth;
+  scrollBats.classList.add("is-flying");
+};
+
+const sendBatsToSection = (sectionId, navLink) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  pendingBatTarget = { sectionId, navLink };
+  if (!batFlightInProgress) startQueuedBatFlight();
+};
+
 const setActiveLink = (sectionId) => {
+  const previousActiveLink = document.querySelector(".nav-link.active");
   let activeFound = false;
+  let nextActiveLink = null;
   navLinks.forEach((link) => {
     if (link.getAttribute("href") === `#${sectionId}`) {
       link.classList.add("active");
       updateNavIndicator(link);
       activeFound = true;
+      nextActiveLink = link;
     } else {
       link.classList.remove("active");
     }
   });
   if (!activeFound) updateNavIndicator(null);
+  if (nextActiveLink && nextActiveLink !== previousActiveLink) {
+    sendBatsToSection(sectionId, nextActiveLink);
+  }
 };
 
 // Mobile Menu
@@ -318,6 +341,7 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
 // Unified Scroll Event
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
+
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const scrollPercent = docHeight > 0 ? (Math.max(0, Math.min(1, scrollY / docHeight))) : 0;
   
@@ -455,16 +479,6 @@ if (lightbox && lightboxImg && lightboxClose) {
       }
     });
 
-    if (cursor && cursorRing) {
-      trigger.addEventListener("mouseenter", () => {
-        cursor.classList.add("hover");
-        cursorRing.classList.add("hover");
-      });
-      trigger.addEventListener("mouseleave", () => {
-        cursor.classList.remove("hover");
-        cursorRing.classList.remove("hover");
-      });
-    }
   });
 
   lightboxClose.addEventListener("click", (e) => {
